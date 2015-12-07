@@ -1,4 +1,4 @@
--module(solution).
+-module(part2).
 -export([main/0]).
 -import(dict, [store/3, update_counter/3]).
 

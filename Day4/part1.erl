@@ -1,4 +1,4 @@
--module(sol1).
+-module(part1).
 -export([main/0]).
 -import(lists, [flatten/1, map/2]).
 -import(string, [str/2]).
@@ -8,9 +8,8 @@ main() ->
 	LowestNum = get_lowest_num(Prefix, 1),
 	io:format("~p~n", [LowestNum]).
 
-% For part 1 replace the 6 0's with 5 0's.
 get_lowest_num(Prefix, N) ->
-	case str(checksum([Prefix|integer_to_list(N)]), "000000") of
+	case str(checksum([Prefix|integer_to_list(N)]), "00000") of
 		1 -> N;
 		_ -> get_lowest_num(Prefix, N+1)
 	end.

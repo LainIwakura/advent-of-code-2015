@@ -1,4 +1,4 @@
--module(sol1).
+-module(part1).
 -export([main/0]).
 
 main() ->

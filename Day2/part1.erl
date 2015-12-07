@@ -1,11 +1,12 @@
--module(sol1).
+-module(part1).
 -export([main/0]).
 
 main() ->
 	{ok, File} = file:open("input", [read]),
 	Lines = read(File),
 	file:close(File),
-	Sum = sum_sides(Lines, 0),
+	Sides = [{L*W,W*H,H*L} || {L,W,H} <- Lines],
+	Sum = sum_sides(Sides, 0),
 	io:format("~p~n", [Sum]).
 
 read(File) ->
@@ -21,7 +22,5 @@ read(File) ->
 sum_sides([], Acc) ->
 	Acc;
 sum_sides([H|T], Acc) ->
-	Max = lists:max(tuple_to_list(H)),
-	Rest = tuple_to_list(H) -- [Max],
-	Sum = lists:foldl(fun(X, Y) -> X+X + Y end, 0, Rest),
-	sum_sides(T, Acc + Sum + lists:foldl(fun(X, Prod) -> X * Prod end, 1, tuple_to_list(H))).
+	Min = lists:min(tuple_to_list(H)),
+	sum_sides(T, Acc + Min + lists:foldl(fun(X, Prod) -> (2*X) + Prod end, 0, tuple_to_list(H))).
