@@ -1,4 +1,4 @@
--module(solution).
+-module(part1).
 -export([main/0]).
 -import(lists, [partition/2]).
 
