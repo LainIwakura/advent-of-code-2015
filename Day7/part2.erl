@@ -1,6 +1,12 @@
 -module(part2).
 -export([main/0]).
 
+%% Roughly the same as part 1 except after we create the circuits we
+%% assign the result of val("a") to B.
+%%
+%% After this we recreate the circuits (ETS inserts in a set overwrite their
+%% previous value), then we override the "b" wire with B (the result of val("a").
+%% After this, we just ask for val("a") again.
 main() ->
 	ets:new(circuits, [set,public,named_table]),
 	create_circuits(readlines("input")),
