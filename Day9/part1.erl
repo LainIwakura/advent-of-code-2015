@@ -1,6 +1,7 @@
 -module(part1).
 -export([main/0]).
 
+%% This functions displays the results for both parts
 main() ->
 	ets:new(cities, [set,public,named_table]),
 	gather_data(),
